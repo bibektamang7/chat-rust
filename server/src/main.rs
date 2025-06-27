@@ -2,12 +2,15 @@ use std::io::{ErrorKind, Read, Write};
 use std::net::TcpListener;
 use std::sync::mpsc;
 use std::thread;
+
 const LOCAL: &str = "127.0.0.1:6000";
+
 fn sleep() {
-    thread::sleep(::std::time::Duration::from_millis(100));
+    thread::sleep(std::time::Duration::from_millis(100));
 }
 fn main() {
     let server = TcpListener::bind(LOCAL).expect("Listener failed to bind");
+
     server
         .set_nonblocking(true)
         .expect("Failed to initialize non blocking");
